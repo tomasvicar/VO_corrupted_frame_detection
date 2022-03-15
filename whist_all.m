@@ -1,6 +1,5 @@
 function weighted_hists =  whist_all(data,W)
 
-
 W = repmat(W,[1,1,size(data,3)]);
 
 weighted_hists = zeros(size(data,3),255);
