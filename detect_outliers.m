@@ -8,19 +8,19 @@ sparsity = 3;
 remove_max_perc = 0.2;
 
 
-tmp_save_folder = 'D:/data_vo_tmp';
+tmp_save_folder = 'D:/data_vo_tmp2';
 
 
-filenames = subdir('D:/data_vo_registered/*.avi');
+filenames = subdir('D:/data_vo_registered2/*.avi');
 filenames = {filenames(:).name};
 
-has_not_660_ = cellfun(@(x) contains(x,'_660_')==0, filenames, UniformOutput=true) ;
-filenames = filenames(has_not_660_);
+% has_not_660_ = cellfun(@(x) contains(x,'_660_')==0, filenames, UniformOutput=true) ;
+% filenames = filenames(has_not_660_);
 
 
 % rng(42)
 % perm = randperm(length(filenames));
-for k = 21:length(filenames)
+for k = 1:length(filenames)
     
 %     filename = filenames(perm(k)).name;
     filename = filenames{k};

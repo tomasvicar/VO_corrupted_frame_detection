@@ -1,14 +1,14 @@
 clc;clear all;close all force;
 
 
-tmp_save_folder = 'D:/data_vo_tmp';
+tmp_save_folder = 'D:/data_vo_tmp2';
 
 
-filenames = subdir('D:/data_vo_registered/*.avi');
+filenames = subdir('D:/data_vo_registered2/*.avi');
 filenames = {filenames(:).name};
-
-has_not_660_ = cellfun(@(x) contains(x,'_660_')==0, filenames, UniformOutput=true) ;
-filenames = filenames(has_not_660_);
+% 
+% has_not_660_ = cellfun(@(x) contains(x,'_660_')==0, filenames, UniformOutput=true) ;
+% filenames = filenames(has_not_660_);
 
 filenames_for_table = {};
 
