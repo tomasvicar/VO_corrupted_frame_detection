@@ -8,9 +8,9 @@ sparsity = 3;
 remove_max_perc = 0.2;
 
 
-tmp_save_folder = 'D:/data_vo_tmp';
+tmp_save_folder = 'D:/tmp_xxx';
 
-filenames = subdir('D:/data_vo_registered/*.avi');
+filenames = subdir('D:/Sada_01/*_m.avi');
 filenames = {filenames(:).name};
 
 % has_not_660_ = cellfun(@(x) contains(x,'_660_')==0, filenames, UniformOutput=true) ;
@@ -19,7 +19,7 @@ filenames = {filenames(:).name};
 
 % rng(42)
 % perm = randperm(length(filenames));
-for k = 1:length(filenames)
+for k = 2:length(filenames)
     
 %     filename = filenames(perm(k)).name;
     filename = filenames{k};
@@ -51,14 +51,16 @@ for k = 1:length(filenames)
     W = padarray(W_small,[shape_reduce(1)/2 shape_reduce(2)/2],'both');
 
 
+     W_hist = whist_all(video_data,W);
 
-
-    med3_filt =  medfilt3_time_sparse(video_data,medfilt_size,sparsity);
-    data_min_med = single(video_data) - single(med3_filt);
-    W3 = repmat(W,[1,1,size(video_data,3)]);
-    rmse_from_med  =  squeeze(sqrt(sum( single(W3) .* (data_min_med.^2),[1,2])))';
+%     med3_filt =  medfilt3_time_sparse(video_data,medfilt_size,sparsity);
+%     data_min_med = single(video_data) - single(med3_filt);
+%     W3 = repmat(W,[1,1,size(video_data,3)]);
+%     rmse_from_med  =  squeeze(sqrt(sum( single(W3) .* (data_min_med.^2),[1,2])))';
 %     rmse_from_med  =  squeeze(sum( single(W3) .* (abs(data_min_med)),[1,2]))';
-
+    
+    
+    rmse_from_med =  sqrt(sum((W_hist - medfilt1(W_hist,medfilt_size,[],1,'truncate')).^2,2));
 
     remove_max = round(size(video_data,3)*remove_max_perc);
     [B,outliers_binar] = rmoutliers(rmse_from_med,'gesd','ThresholdFactor',thresholdFactor,'MaxNumOutliers',remove_max);

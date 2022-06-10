@@ -58,7 +58,7 @@ for k = 1:length(filenames)
 
     json_data = jsonencode(s);
 
-    fname = [final_save_folder '/' replace(name,'_registered','') '/Varia/corrupted_frames.json'];
+    fname = [final_save_folder '/' replace(name,'_registered','') '/Varia' '/' replace(name,'_registered','')  '_corrupted_frames.json'];
     
     mkdir(fileparts(fname))
 
