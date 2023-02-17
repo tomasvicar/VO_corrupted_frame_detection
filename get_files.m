@@ -1,16 +1,16 @@
 clc;clear all;close all force;
 
 
-final_save_folder = 'D:/data_vo_tmp_fileres';
+final_save_folder = '../outliers_tmp_finalres';
 
-tmp_save_folder = 'D:/data_vo_tmp';
+tmp_save_folder = '../outliers_tmp';
 
 
 % filenames = subdir('D:/data_vo_registered2/*.avi');
 % filenames = {filenames(:).name};
 
 filenames = {};
-filenames_tmp = subdir('D:/data_vo_registered/*.avi');
+filenames_tmp = subdir('../Sada_02/*_registered.avi');
 filenames = [filenames,filenames_tmp(:).name];
 
 
@@ -58,7 +58,7 @@ for k = 1:length(filenames)
 
     json_data = jsonencode(s);
 
-    fname = [final_save_folder '/' replace(name,'_registered','') '/Varia' '/' replace(name,'_registered','')  '_corrupted_frames.json'];
+    fname = [final_save_folder '/' replace(replace(replace(name,'_registered',''),'_wl1',''),'_wl2','') '/Varia' '/' name '_corrupted_frames.json'];
     
     mkdir(fileparts(fname))
 
