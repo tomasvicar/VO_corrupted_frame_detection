@@ -1,16 +1,16 @@
 clc;clear all;close all force;
 
 
-final_save_folder = '../outliers_tmp_finalres';
+final_save_folder = 'C:\Data\Vicar\tmp_sada03\Sada03_outliers_final';
 
-tmp_save_folder = '../outliers_tmp';
+tmp_save_folder = 'C:\Data\Vicar\tmp_sada03\Sada03_outliers';
 
 
 % filenames = subdir('D:/data_vo_registered2/*.avi');
 % filenames = {filenames(:).name};
 
 filenames = {};
-filenames_tmp = subdir('../Sada_02/*_registered.avi');
+filenames_tmp = subdir('C:\Data\Vicar\tmp_sada03\Sada03/*_registered.avi');
 filenames = [filenames,filenames_tmp(:).name];
 
 
@@ -60,6 +60,7 @@ for k = 1:length(filenames)
 
     fname = [final_save_folder '/' replace(replace(replace(name,'_registered',''),'_wl1',''),'_wl2','') '/Varia' '/' name '_corrupted_frames.json'];
     
+
     mkdir(fileparts(fname))
 
     fileID = fopen(fname,'w');
